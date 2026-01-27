@@ -10,7 +10,7 @@ const getVisitorId = (): string => {
   return visitorId;
 };
 
-const getDeviceType = (): string => {
+const getDeviceType = (): 'mobile' | 'tablet' | 'desktop' => {
   const userAgent = navigator.userAgent;
   if (/mobile/i.test(userAgent)) return 'mobile';
   if (/tablet/i.test(userAgent)) return 'tablet';
@@ -21,13 +21,21 @@ export function useVisitorTracking() {
   useEffect(() => {
     const trackVisit = async () => {
       try {
-        await supabase.from('visitor_analytics').insert({
-          page_path: window.location.pathname,
-          visitor_id: getVisitorId(),
-          user_agent: navigator.userAgent,
-          referrer: document.referrer || null,
-          device_type: getDeviceType(),
+        // Use edge function with rate limiting and validation
+        const { error } = await supabase.functions.invoke('track-visitor', {
+          body: {
+            page_path: window.location.pathname.slice(0, 500),
+            visitor_id: getVisitorId().slice(0, 100),
+            user_agent: navigator.userAgent.slice(0, 1000),
+            referrer: document.referrer ? document.referrer.slice(0, 2000) : null,
+            device_type: getDeviceType(),
+          },
         });
+
+        if (error) {
+          // Silent fail - don't interrupt user experience
+          console.error('Failed to track visit:', error);
+        }
       } catch (error) {
         // Silent fail - don't interrupt user experience
         console.error('Failed to track visit:', error);
