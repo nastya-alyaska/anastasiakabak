@@ -30,8 +30,8 @@ export function Header() {
             </span>
           </a>
 
-          {/* Desktop Navigation - Center */}
-          <div className="hidden lg:flex items-center justify-center gap-8 xl:gap-12">
+          {/* Desktop Navigation - Center with more spacing from logo */}
+          <div className="hidden lg:flex items-center justify-center gap-8 xl:gap-12 ml-16 xl:ml-24">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -77,15 +77,6 @@ export function Header() {
             >
               <a href="#contacts">{t.nav.book}</a>
             </Button>
-
-            {/* Login Link */}
-            <Button 
-              variant="ghost" 
-              size="sm"
-              asChild
-            >
-              <a href="/auth">{language === 'uk' ? 'Вхід' : 'Login'}</a>
-            </Button>
           </div>
 
           {/* Mobile/Tablet Right Side */}
@@ -113,16 +104,6 @@ export function Header() {
                 EN
               </button>
             </div>
-
-            {/* Login Button - Mobile */}
-            <Button 
-              variant="ghost" 
-              size="sm"
-              asChild
-              className="text-xs px-2"
-            >
-              <a href="/auth">{language === 'uk' ? 'Вхід' : 'Login'}</a>
-            </Button>
 
             {/* Menu Button */}
             <button
