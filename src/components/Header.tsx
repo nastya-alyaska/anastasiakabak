@@ -67,6 +67,15 @@ export function Header() {
             >
               <a href="#contacts">{t.nav.book}</a>
             </Button>
+
+            {/* Admin Link */}
+            <Button 
+              variant="ghost" 
+              size="sm"
+              asChild
+            >
+              <a href="/auth">{language === 'uk' ? 'Вхід' : 'Login'}</a>
+            </Button>
           </div>
 
           {/* Mobile Language Switcher + Menu Button */}
