@@ -68,7 +68,7 @@ export function Header() {
               <a href="#contacts">{t.nav.book}</a>
             </Button>
 
-            {/* Admin Link */}
+            {/* Login Link - Desktop */}
             <Button 
               variant="ghost" 
               size="sm"
@@ -78,8 +78,20 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Mobile Language Switcher + Menu Button */}
+          {/* Login Button - Always Visible (Mobile/Tablet) */}
           <div className="lg:hidden flex items-center gap-2">
+            <Button 
+              variant="ghost" 
+              size="sm"
+              asChild
+              className="text-xs px-2"
+            >
+              <a href="/auth">{language === 'uk' ? 'Вхід' : 'Login'}</a>
+            </Button>
+          </div>
+
+          {/* Mobile Language Switcher + Menu Button */}
+          <div className="lg:hidden flex items-center gap-1">
             <div className="flex items-center gap-1 border border-border rounded-full p-1">
               <button
                 onClick={() => setLanguage('uk')}
