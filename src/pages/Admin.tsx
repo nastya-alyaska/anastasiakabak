@@ -49,7 +49,13 @@ export default function Admin() {
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
         <AdminSidebar currentView={currentView} setCurrentView={setCurrentView} />
-        <main className="flex-1 p-6 overflow-auto">
+        <main className="flex-1 p-3 sm:p-4 md:p-6 overflow-auto min-w-0">
+          {/* Mobile header with sidebar trigger */}
+          <div className="md:hidden mb-4 flex items-center justify-between">
+            <h1 className="font-display text-lg font-medium">
+              {language === 'uk' ? 'Панель керування' : 'Admin Panel'}
+            </h1>
+          </div>
           <AdminDashboard currentView={currentView} />
         </main>
       </div>
