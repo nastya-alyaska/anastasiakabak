@@ -10,6 +10,7 @@ import gestaltFirstStep from '@/assets/certificates/gestalt-first-step.jpg';
 import militaryTrauma from '@/assets/certificates/military-trauma.jpg';
 import stressManagement from '@/assets/certificates/stress-management.jpg';
 import firstAid from '@/assets/certificates/first-aid.jpg';
+import anxietyDisorders from '@/assets/certificates/anxiety-disorders.jpeg';
 
 interface Certificate {
   id: string;
@@ -51,6 +52,11 @@ export function Education() {
       id: '6',
       src: firstAid,
       title: 'Перша психологічна допомога',
+    },
+    {
+      id: '7',
+      src: anxietyDisorders,
+      title: 'Тривожні розлади та панічні атаки',
     },
   ];
 
