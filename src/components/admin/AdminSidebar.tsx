@@ -63,19 +63,19 @@ export function AdminSidebar({ currentView, setCurrentView }: AdminSidebarProps)
   ];
 
   return (
-    <Sidebar className="border-r border-border">
-      <SidebarHeader className="p-4 border-b border-border">
-        <div className="flex items-center justify-between">
-          <h2 className="font-display text-lg font-medium">
+    <Sidebar collapsible="icon" className="border-r border-border">
+      <SidebarHeader className="p-3 md:p-4 border-b border-border">
+        <div className="flex items-center justify-between gap-2">
+          <h2 className="font-display text-base md:text-lg font-medium truncate group-data-[collapsible=icon]:hidden">
             {language === 'uk' ? 'Панель керування' : 'Admin Panel'}
           </h2>
-          <SidebarTrigger />
+          <SidebarTrigger className="shrink-0" />
         </div>
       </SidebarHeader>
       
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>
+          <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden">
             {language === 'uk' ? 'Меню' : 'Menu'}
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -86,9 +86,10 @@ export function AdminSidebar({ currentView, setCurrentView }: AdminSidebarProps)
                     onClick={() => setCurrentView(item.id)}
                     isActive={currentView === item.id}
                     className="w-full"
+                    tooltip={item.label}
                   >
-                    <item.icon className="w-4 h-4" />
-                    <span>{item.label}</span>
+                    <item.icon className="w-4 h-4 shrink-0" />
+                    <span className="truncate">{item.label}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -97,20 +98,24 @@ export function AdminSidebar({ currentView, setCurrentView }: AdminSidebarProps)
         </SidebarGroup>
       </SidebarContent>
       
-      <SidebarFooter className="p-4 border-t border-border space-y-2">
-        <div className="text-sm text-muted-foreground truncate">
+      <SidebarFooter className="p-3 md:p-4 border-t border-border space-y-2">
+        <div className="text-xs md:text-sm text-muted-foreground truncate group-data-[collapsible=icon]:hidden">
           {user?.email}
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm" asChild className="flex-1">
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button variant="outline" size="sm" asChild className="flex-1 text-xs md:text-sm">
             <a href="/">
-              <Home className="w-4 h-4 mr-1" />
-              {language === 'uk' ? 'Сайт' : 'Site'}
+              <Home className="w-4 h-4 shrink-0" />
+              <span className="group-data-[collapsible=icon]:hidden ml-1">
+                {language === 'uk' ? 'Сайт' : 'Site'}
+              </span>
             </a>
           </Button>
-          <Button variant="outline" size="sm" onClick={signOut} className="flex-1">
-            <LogOut className="w-4 h-4 mr-1" />
-            {language === 'uk' ? 'Вийти' : 'Logout'}
+          <Button variant="outline" size="sm" onClick={signOut} className="flex-1 text-xs md:text-sm">
+            <LogOut className="w-4 h-4 shrink-0" />
+            <span className="group-data-[collapsible=icon]:hidden ml-1">
+              {language === 'uk' ? 'Вийти' : 'Logout'}
+            </span>
           </Button>
         </div>
       </SidebarFooter>
