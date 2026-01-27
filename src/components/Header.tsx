@@ -69,13 +69,37 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Language Switcher + Menu Button */}
+          <div className="lg:hidden flex items-center gap-2">
+            <div className="flex items-center gap-1 border border-border rounded-full p-1">
+              <button
+                onClick={() => setLanguage('uk')}
+                className={`px-2 py-0.5 text-xs font-medium rounded-full transition-colors ${
+                  language === 'uk' 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                UA
+              </button>
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-2 py-0.5 text-xs font-medium rounded-full transition-colors ${
+                  language === 'en' 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                EN
+              </button>
+            </div>
+            <button
+              className="p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </nav>
 
         {/* Mobile Menu */}
@@ -93,28 +117,6 @@ export function Header() {
                 </a>
               ))}
 
-              <div className="flex items-center gap-2 pt-2">
-                <button
-                  onClick={() => setLanguage('uk')}
-                  className={`px-4 py-2 text-sm font-medium rounded-full border transition-colors ${
-                    language === 'uk' 
-                      ? 'bg-primary text-primary-foreground border-primary' 
-                      : 'border-border text-muted-foreground'
-                  }`}
-                >
-                  Українська
-                </button>
-                <button
-                  onClick={() => setLanguage('en')}
-                  className={`px-4 py-2 text-sm font-medium rounded-full border transition-colors ${
-                    language === 'en' 
-                      ? 'bg-primary text-primary-foreground border-primary' 
-                      : 'border-border text-muted-foreground'
-                  }`}
-                >
-                  English
-                </button>
-              </div>
 
               <Button 
                 variant="default" 
