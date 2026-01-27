@@ -3,8 +3,13 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { X } from 'lucide-react';
 
-// Import certificate images - add new imports here when uploading new certificates
-import anxietyDisordersCert from '@/assets/certificates/anxiety-disorders.jpeg';
+// Import certificate images
+import mastersDiploma from '@/assets/certificates/masters-diploma.jpg';
+import clinicalPsychology from '@/assets/certificates/clinical-psychology.jpg';
+import gestaltFirstStep from '@/assets/certificates/gestalt-first-step.jpg';
+import militaryTrauma from '@/assets/certificates/military-trauma.jpg';
+import stressManagement from '@/assets/certificates/stress-management.jpg';
+import firstAid from '@/assets/certificates/first-aid.jpg';
 
 interface Certificate {
   id: string;
@@ -16,14 +21,37 @@ export function Education() {
   const { t } = useLanguage();
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
 
-  // All certificates are now images (jpeg)
   const certificates: Certificate[] = [
     {
       id: '1',
-      src: anxietyDisordersCert,
-      title: 'Тривожні розлади та панічні атаки',
+      src: mastersDiploma,
+      title: 'Диплом магістра - Психологія',
     },
-    // Add more certificates here after uploading them to src/assets/certificates/
+    {
+      id: '2',
+      src: clinicalPsychology,
+      title: 'Клінічна психологія',
+    },
+    {
+      id: '3',
+      src: gestaltFirstStep,
+      title: 'Гештальт-терапія (I ступінь)',
+    },
+    {
+      id: '4',
+      src: militaryTrauma,
+      title: 'Робота з учасниками бойових дій',
+    },
+    {
+      id: '5',
+      src: stressManagement,
+      title: 'Управління стресом',
+    },
+    {
+      id: '6',
+      src: firstAid,
+      title: 'Перша психологічна допомога',
+    },
   ];
 
   return (
