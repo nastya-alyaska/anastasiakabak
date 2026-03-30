@@ -20,7 +20,7 @@ export function Hero() {
 
           <Button 
             size="lg"
-            className="bg-muted hover:bg-muted/90 text-secondary-foreground font-medium text-lg px-8 py-6"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium text-lg px-8 py-6"
             asChild
           >
             <a href="#contacts">{t.nav.book}</a>
