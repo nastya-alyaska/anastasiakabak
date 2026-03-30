@@ -72,7 +72,7 @@ export function Header() {
             {/* Book Button */}
             <Button 
               variant="default" 
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium"
+              className="bg-muted hover:bg-muted/90 text-secondary-foreground font-medium"
               asChild
             >
               <a href="#contacts">{t.nav.book}</a>
@@ -133,7 +133,7 @@ export function Header() {
 
               <Button 
                 variant="default" 
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium mt-2 w-full"
+                className="bg-muted hover:bg-muted/90 text-secondary-foreground font-medium mt-2 w-full"
                 asChild
               >
                 <a href="#contacts" onClick={() => setMobileMenuOpen(false)}>{t.nav.book}</a>
